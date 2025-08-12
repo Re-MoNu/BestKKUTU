@@ -19,7 +19,7 @@ h1 {
     -ms-user-select: none;
 }
 
-h2 {
+#startGame {
     font-family: 'CookieRun-Regular', sans-serif;
     font-size: 2em;
     font-weight: bold;
@@ -54,7 +54,7 @@ h2 {
     -ms-user-select: none;
 }
 
-h2:hover {
+#startGame:hover {
     background: linear-gradient(145deg, #999999, #888888);
     box-shadow: 
         0 12px 20px rgba(119, 119, 119, 0.4),
@@ -63,7 +63,7 @@ h2:hover {
     transform: translate(-50%, -50%) translateY(-2px);
 }
 
-h2:active {
+#startGame:active {
     background: linear-gradient(145deg, #777777, #666666);
     box-shadow: 
         0 4px 8px rgba(119, 119, 119, 0.2),
@@ -100,7 +100,7 @@ input {
     -moz-user-select: none;
     -ms-user-select: none;
 }
-button {
+#submitButton {
     font-family: 'CookieRun-Regular', sans-serif;
     font-size: 1.5em;
     padding: 10px 20px;
@@ -117,7 +117,7 @@ button {
     -moz-user-select: none;
     -ms-user-select: none;
 }
-button:hover {
+#submitButton:hover {
     background-color: #ee5a5a;
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);

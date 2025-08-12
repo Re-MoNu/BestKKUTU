@@ -5,9 +5,10 @@ function start() {
     document.getElementById("epicmusic").play();
     document.getElementById("epicmusic").loop = true;
 }
+const wordInput = document.getElementById("wordInput");
+let passedFirst = false;
 function submitWord() {
     const isFullyKorean = (str) => /^[\uAC00-\uD7A3]+$/.test(str);
-    const wordInput = document.getElementById("wordInput");
     const word = wordInput.value.trim();
     if (word) {
         if(isFullyKorean(word)) {
@@ -23,9 +24,15 @@ function submitWord() {
                     wordInput.focus(); // Focus back on the input field
                     return; // Exit the function if the word is "이리듐"
                 } else {
-                    const lastChar = word.charAt(word.length - 1);
-                    endGame(lastChar);
-                    wordInput.value = ""; // Clear the input field
+                    // if(passedFirst) {
+                    //     fetch("https://krdict.korean.go.kr/api/search/사과")
+                    //         .then(console.log(Response));
+
+                    // } else {
+                        const lastChar = word.charAt(word.length - 1);
+                        doomCheck(lastChar);
+                        wordInput.value = ""; // Clear the input field
+                    // }
                 }
             }
         } else {
@@ -37,6 +44,16 @@ function submitWord() {
     } else {
         alert("단어 입력하세요 ㅗㅗㅗ");
         return;
+    }
+}
+function doomCheck(lastChar) {
+    if(lastChar == '듐') {
+        passedFirst=true;
+        document.getElementById("currentWord").innerText = "듐피스트";
+        wordInput.value = ""; // Clear the input field
+        wordInput.focus(); // Focus back on the input field
+    } else {
+        endGame(lastChar);
     }
 }
 function endGame(lastChar) {

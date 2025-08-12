@@ -8,10 +8,11 @@
     <title>BEST Kkutu</title>
 </head>
 <body>
-    <h2 id="startGame" onclick="start()">START</h2>
+    <button id="startGame" onclick="start()">START</button>
     <div id="container" style="display: none;">
         <h1>BEST 끄투</h1>
         <div id="gameArea">
+            <h3 id="currentWord"></h3>
             <input type="text" id="wordInput" autocomplete="off" placeholder="단어를 입력하세요..."> <button id="submitButton" onclick="submitWord()">제출</button>
         </div>
     </div>
