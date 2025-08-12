@@ -24,15 +24,13 @@ function submitWord() {
                     wordInput.focus(); // Focus back on the input field
                     return; // Exit the function if the word is "이리듐"
                 } else {
-                    // if(passedFirst) {
-                    //     fetch("https://krdict.korean.go.kr/api/search/사과")
-                    //         .then(console.log(Response));
-
-                    // } else {
-                        const lastChar = word.charAt(word.length - 1);
+                    const lastChar = word.charAt(word.length - 1);
+                    if(passedFirst) {
+                        fetchWord(lastChar);
+                    } else {
                         doomCheck(lastChar);
                         wordInput.value = ""; // Clear the input field
-                    // }
+                    }
                 }
             }
         } else {
@@ -46,6 +44,25 @@ function submitWord() {
         return;
     }
 }
+const api_key = "81B2D9DD8828E68B4F0E534EEBF0E47B";
+async function fetchWord(lastChar) {
+        
+        const userInput = lastChar;
+        const api_url = `https://krdict.korean.go.kr/api/search?key=${api_key}&type_search=search&part=word&q=${userInput}&sort=dict`;
+        console.log(userInput);
+        try {
+            const response = await fetch(api_url);
+            if(!response.ok) {
+                throw new Error("failed to fetch");
+            }
+            const data = await response.text();
+            console.log(data);
+        }
+        catch (error) {
+            console.error(error);
+        }
+}
+
 function doomCheck(lastChar) {
     if(lastChar == '듐') {
         passedFirst=true;
@@ -56,6 +73,7 @@ function doomCheck(lastChar) {
         endGame(lastChar);
     }
 }
+
 function endGame(lastChar) {
     document.getElementById("container").style.display = "none";
     document.getElementById("gameOver").style.display = "flex";
